@@ -33,10 +33,12 @@ public class UsuarioController extends HttpServlet {
             if (new UsuarioService().Inserir(nome, email, senha)){
                 Url += "login.jsp";
             }
+            else{
+                req.setAttribute("erro", "Erro no cadastro!");
+                Url += "Cadastro.jsp";
+            }
         } catch (Exception e) {
             e.printStackTrace();
-            req.setAttribute("erro", "Erro no cadastro!");
-            Url += "Cadastro.jsp";
         }
         rd = req.getRequestDispatcher(Url);
         rd.forward(req, rep);

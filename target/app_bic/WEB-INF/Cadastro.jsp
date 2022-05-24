@@ -32,7 +32,6 @@
     <label for="password"><b>Confirme sua senha:</b></label>
         <input type="password" id="passwdConfirmar" placeholder="senha1243" required><br/><br/>
     <input type="button" onclick="checarSenha()" value="Cadastrar" name="cadastro"><br/><br/>
-    <input type="submit" value="VoltarIndex" name="voltar"><br/><br/>
 </form>
 
 <c:if test="${not empty erro}">

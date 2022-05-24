@@ -25,11 +25,15 @@ public class UsuarioService {
 
     public boolean Inserir(String nome, String email, String senha) {
 
-        if (new UsuarioDao().InsertUsuario(nome, email, senha)){
-            return true;
-        }else{
-            return false;
+        try {
+            if (new UsuarioDao().InsertUsuario(nome, email, senha)){
+                return true;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
+
+        return false;
 
     }
 }

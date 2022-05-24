@@ -43,15 +43,13 @@ public class UsuarioDao {
     public boolean InsertUsuario(String nome, String email, String senha){
 
         try (Connection connection = new ConectaDBPostgres().getConexao()) {
-
             this.sql = "INSERT INTO usuario (nomeUsuario, emailUsuario, senhaUsuario, dataCadastroUsuario, ativoUsuario, idpermissao) VALUES  (?, ?, ?, CURRENT_DATE, true, 1);";
             preparedStatement = connection.prepareStatement(this.sql);
             preparedStatement.setString(1, nome);
             preparedStatement.setString(2, email);
             preparedStatement.setString(3, senha);
-            resultSet = preparedStatement.executeQuery();
-            resultSet.next();sd
-        }catch (Exception e){
+            preparedStatement.execute();
+        }catch (SQLException e){
             e.printStackTrace();
             return false;
         }
